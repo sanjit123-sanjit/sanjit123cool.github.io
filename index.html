@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Website Traffic and Ad Revenue Estimator</title>
+</head>
+<body>
+    <h1>Website Traffic and Ad Revenue Estimator</h1>
+    <p>This tool estimates the traffic and ad revenue for your website.</p>
+    <form id="estimatorForm">
+        <label for="traffic">Monthly Traffic (visits):</label><br>
+        <input type="number" id="traffic" name="traffic"><br><br>
+        <label for="ctr">Click-Through Rate (CTR) %:</label><br>
+        <input type="number" id="ctr" name="ctr" step="0.01"><br><br>
+        <label for="cpc">Cost Per Click (CPC) $:</label><br>
+        <input type="number" id="cpc" name="cpc" step="0.01"><br><br>
+        <button type="button" onclick="calculateRevenue()">Calculate Revenue</button>
+    </form>
+    <p id="result"></p>
+    <script>
+        function calculateRevenue() {
+            var traffic = document.getElementById('traffic').value;
+            var ctr = document.getElementById('ctr').value / 100;
+            var cpc = document.getElementById('cpc').value;
+            var clicks = traffic * ctr;
+            var revenue = clicks * cpc;
+            document.getElementById('result').innerHTML = "Estimated Monthly Revenue: $" + revenue.toFixed(2);
+        }
+    </script>
+</body>
+</html>
